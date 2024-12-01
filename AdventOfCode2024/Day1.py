@@ -5,20 +5,30 @@ Created on Sun Dec  1 18:51:26 2024
 @author: beers
 """
 
-import numpy as np
 import pandas as pd
+from functions import *
 
-df = pd.read_csv("input", delimiter='\t', header=None, names=['Data1', 'Data2'])
 
-for col in df:
-    df[col] = df[col].sort_values(ignore_index=True)
+df = get_test_data()
+df = pd.read_csv("input", sep='\s+', header=None, names=['Column1', 'Column2'])
 
-print(df.size)
+df = sort_df_cols(df)
 
-#df['diff'] = [x - y for x, y in zip(df.iloc[:, 0], df.iloc[:, 1])]
+df['diff'] = [abs(x - y) for x, y in zip(df['Column1'], df['Column2'])]
+    
+totalListDiff = sum(df['diff'])
+
+for idx, row in df.iterrows():
+    
+    num = row['Column1']
+    print(num)
+    
+    count = (df['Column2'] == num).sum()
+    
+    df.loc[idx, 'simScore'] = count * num
+
+totalSimScore = sum(df['simScore'])
     
 print(df.head())
-
-#print(df.iloc[:, 1])
-#print(df.iloc[:, 0])
-
+print('totalListDiff: ', totalListDiff)
+print('totalSimScore: ', totalSimScore)
