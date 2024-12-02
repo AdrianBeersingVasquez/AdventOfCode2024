@@ -16,6 +16,10 @@ def get_test_data():
     
     return pd.DataFrame(data)
 
+'''
+DAY 1
+'''
+
 def sort_df_cols(df):
     for col in df:
         df[col] = df[col].sort_values(ignore_index=True)
