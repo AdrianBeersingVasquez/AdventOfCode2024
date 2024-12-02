@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Dec  2 09:20:07 2024
+
+@author: Adrian
+"""
+Criteria:
+Cannot increase >2
+Cannot decrease >-2
+all either increasing/decreasing
+
+Ideas:
+count diff between each column into new df
+
+df[df[diff < 2] && df[diff > -2]]
