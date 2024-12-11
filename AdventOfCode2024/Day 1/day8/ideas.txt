@@ -1,0 +1,35 @@
+Create a dictionary which contains type of marker and coordinates: eg
+Types: Coords
+A: (1, 2), (2,4)
+x: (3,1)
+for  type in types:
+	if coords.size() > 1:
+		# get every possibly pair
+		Coord1, coord2 = get_pairs
+Get_pairs(coords):
+	Return every unique pairing for each type of maker 
+^ done this way means I can run straight through return value of get_pairs instead of needing for loop. Function can handle cases where size == 1, so data is cleaned by the time get_pairs has been called. 
+Coord1, coord2 = get_pairs(coords)
+Pairs = (coord1, coord2)
+For pair in pairs:
+	Diff = get_diff(coord1, coord2)
+# Positive direction, 1 unit from coord1, 2 units from coord2
+if coord1 + diff == coord2 + 2*diff
+if new_coord == within board space
+	save_antiNode
+# Negative direction, 1 unit from coord1, 2 units from coord2
+	if coord1 - diff == coord2 - 2*diff:
+		etc
+# Positive direction, 2 units from coord1, 1 unit from coord2
+	if coord1 + 2 * diff == coord2  + diff:
+		etc
+# Negative direction, 2 units from coord1, 1 unit from coord2
+	if coord1 - 2 * diff == coord2  - diff:
+		etc
+# Actually, there are only every two points – one on either side of the pairing (outside the pairing). Think about what that equation would be. Can be done in only two calculations if the order of coordinates guarantees the coord1 is in the same quadrant relative to coord2, for each pairing.
+Make a map of where the antinodes overlap, then overwrite with the original map:
+antinodes_map = original_map where original != ‘.’
+Count = antinodes_map where antinode_map ==’#’
+Display antinode_map
+
+
