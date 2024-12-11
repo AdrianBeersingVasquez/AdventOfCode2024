@@ -1,0 +1,20 @@
+'''
+what is the difference between starting at 9 vs starting from 1? If
+'''
+Need a dictionary with number and coordinate
+Start from each nine
+Method 1: grow area to each UDLR spot that is one beneath it.
+Starting from given nine:
+My_func(num==9, travelMap, trailheadMap)
+If num==1:
+		If any(UDLR == 1): return trailheadMap incremented at that position
+Else:
+		If any(UDLR == num): return mask of travelMap where only num is present
+			My_funct(num-1, travelMap, trailheadMap)
+		Else: break
+
+		Continue this, essentially growing the map if possible starting at each non zero number, (if not possible break)
+# by setting the trail to 1’s, UDLR check can work by first checking it’s a zero (therefore, for sure checking something that has not been explored before).
+# 
+		 
+Method 2: Recursion and trees (?)
