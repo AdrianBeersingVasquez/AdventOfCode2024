@@ -4,7 +4,7 @@ save_data_on_exit = True
 save_history = True
 save_non_project_files = False
 project_type = 'empty-project-type'
-recent_files = ['day5\\day5.py', 'test_input.txt', 'day8\\ideas.txt']
+recent_files = ['day10\\day10.txt']
 
 [main]
 version = 0.2.0
