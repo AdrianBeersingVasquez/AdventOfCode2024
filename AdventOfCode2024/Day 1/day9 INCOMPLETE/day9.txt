@@ -1,4 +1,5 @@
-the first example above, 2333133121414131402, represents these individual blocks:
+the first example above, 2333133121414131402, represents these individual 
+blocks:
 
 00...111...2...333.44.5555.6666.777.888899
 
@@ -8,3 +9,6 @@ for i in range(0, len(input), 2):
     
     for j in range(0, int(input[i+1])):
         print('.')
+
+instead of trying to swap the two chars, create a new string and append new 
+values to it. If no swap, append from left, if swap, append from right.
