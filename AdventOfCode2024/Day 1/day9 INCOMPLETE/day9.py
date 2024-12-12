@@ -35,13 +35,21 @@ print(blocks.count('.'))
 num_ints = len(blocks) - blocks.count('.')
 
 ordered = 0
-idx = 0
+idx_inc = 0
+idx_dec = len(blocks)-1
 
 while ordered < num_ints:
-    if blocks[idx] != '.':
-        idx += 1
+    if blocks[idx_inc] != '.':
+        idx_inc += 1
         ordered += 1
     else:
-        SWAP
+        # Perform a swap
+        while blocks[idx_dec] == '.':
+            idx_dec -= 1
+        
+        blocks[idx_inc] = blocks[idx_dec]
+        blocks[idx_dec] = '.'
         ordered += 1
+        idx_inc +=1
+    print(blocks)
 
