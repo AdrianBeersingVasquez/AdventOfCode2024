@@ -4,6 +4,9 @@ Created on Thu Dec 12 10:15:55 2024
 
 @author: Adrian
 """
+import sys
+
+sys.set_int_max_str_digits(0)
 
 def get_blocks(input):
     block = ''
@@ -20,36 +23,50 @@ def get_blocks(input):
     
     return block
 
-def move_blocks(input): return 0
+def move_blocks(input):
+    
+    num_ints = len(blocks) - blocks.count('.')
 
-def get_checksum(): return 0
+    idx_inc = 0
+    idx_dec = len(blocks)-1
 
-input = '2333133121414131402'
-input = '233'
-
-blocks = get_blocks(input)
-print(blocks)
-# OUTPUT: 00...111...2...333.44.5555.6666.777.888899
-
-print(blocks.count('.'))
-num_ints = len(blocks) - blocks.count('.')
-
-ordered = 0
-idx_inc = 0
-idx_dec = len(blocks)-1
-
-while ordered < num_ints:
-    if blocks[idx_inc] != '.':
-        idx_inc += 1
-        ordered += 1
-    else:
-        # Perform a swap
-        while blocks[idx_dec] == '.':
+    blocks_ordered = ''
+    
+    while idx_inc < num_ints:
+        if blocks[idx_inc] != '.':
+            blocks_ordered += blocks[idx_inc]
+        
+        else: # Perform a swap
+            # Run backwards through string, finding the non '.' value to substitute
+            while blocks[idx_dec] == '.':
+                idx_dec -= 1
+                
+            blocks_ordered += blocks[idx_dec]
             idx_dec -= 1
         
-        blocks[idx_inc] = blocks[idx_dec]
-        blocks[idx_dec] = '.'
-        ordered += 1
         idx_inc +=1
-    print(blocks)
+    
+    return blocks_ordered
 
+def get_checksum(sequence): 
+    
+    checksum = 0
+    for i in range(0, len(sequence)):
+        checksum += i * int(sequence[i])
+    
+    return checksum
+
+with open('input.txt', 'r', encoding='utf-8') as file:
+    input = file.read()
+
+#input = '2333133121414131402'
+#input = '123'
+
+blocks = get_blocks(input)
+#print(blocks)
+
+ordered_blocks = move_blocks(blocks)
+#print(ordered_blocks)
+
+checksum = get_checksum(ordered_blocks)
+print(checksum)
