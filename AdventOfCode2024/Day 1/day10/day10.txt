@@ -15,6 +15,10 @@ Else:
 
 		Continue this, essentially growing the map if possible starting at each non zero number, (if not possible break)
 # by setting the trail to 1’s, UDLR check can work by first checking it’s a zero (therefore, for sure checking something that has not been explored before).
-# 
+
+I will need to go through each starting point, initalising an emtpy map with a one at the starting point
+then apply the function to descend the hill.
+if not empty, continue each iteration.
+ 
 		 
 Method 2: Recursion and trees (?)
