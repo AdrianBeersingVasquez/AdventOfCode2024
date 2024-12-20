@@ -50,7 +50,8 @@ def UPLD_check(topo_map):
     
     ones = np.nonzero(topo_map)
     for coord in ones:
-    
+        # Check if any UDLR==num-1 and return 0 in their places
+        num
     return new_topo_map
 
 topo_map_filter = topo_map==2
