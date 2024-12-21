@@ -46,19 +46,20 @@ for report in reports:
     diff = nums[1:] - nums[:-1]
     
     check1 = np.abs(diff).min() > 0 and np.abs(diff).max() <= 3
-    check2 = (sum(abs(diff))) == (abs(sum(diff)))
+    check2 = sum(abs(diff)) == abs(sum(diff))
     
     if check1 and check2:
         totalSafe +=1
     
-    print(nums)
-    print(diff)
+    #print(nums)
+    #print(diff)
 
 print(totalSafe)
 
 
 
 '''
+Method 2: Does not work for input given it has different number of columns
 diff = arr[:,1:] - arr[:,0:-1] 
 print(diff)
 
@@ -82,3 +83,12 @@ straightTrend = abs(np.sum(diff2, axis=1)) == 12
 
 totalSafe = np.sum(straightTrend)
 '''
+
+"""
+What did I learn?
+Look at the input before going for an answer based on the sample data
+numpy arrays cannot handle different number of columns. Need to use Nan or set 
+to 0s
+Would be nicer to load the data in its correct format, rather than reformat it 
+with every use
+"""
