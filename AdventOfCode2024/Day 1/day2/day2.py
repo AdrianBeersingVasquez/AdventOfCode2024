@@ -43,19 +43,25 @@ totalSafe = 0
 
 for report in reports:
     nums = np.array(report.split(' '), dtype=('int'))
-    diff = nums[1:] - nums[:-1]
     
-    check1 = np.abs(diff).min() > 0 and np.abs(diff).max() <= 3
-    check2 = sum(abs(diff)) == abs(sum(diff))
+    # Put a for loop here, removing one of the elements in nums each time. If 
+    # any removal returns True on both checks, increment totalSafe and break
+    for i in range(0, len(nums)):
+        diff1 = np.concatenate((nums[0:i], nums[i+1:]), axis=0)
     
-    if check1 and check2:
-        totalSafe +=1
+        diff = diff1[1:] - diff1[:-1]
+    
+        check1 = np.abs(diff).min() > 0 and np.abs(diff).max() <= 3
+        check2 = sum(abs(diff)) == abs(sum(diff))
+    
+        if check1 and check2:
+            totalSafe +=1
+            break
     
     #print(nums)
     #print(diff)
 
 print(totalSafe)
-
 
 
 '''
@@ -86,9 +92,14 @@ totalSafe = np.sum(straightTrend)
 
 """
 What did I learn?
+Part 1:
 Look at the input before going for an answer based on the sample data
 numpy arrays cannot handle different number of columns. Need to use Nan or set 
 to 0s
 Would be nicer to load the data in its correct format, rather than reformat it 
 with every use
+
+Part 2:
+Optimise the code to be adaptable from the start, don't end up needing to restructure
+
 """
