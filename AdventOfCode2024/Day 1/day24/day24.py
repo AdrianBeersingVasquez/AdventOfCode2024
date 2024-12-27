@@ -17,6 +17,7 @@ states = {}
 for line in starting_states:
     key, value = line.split(': ')
     states[key] = value
+states_df = pd.DataFrame(states)
 
 rules_ls = data[1].split('\n')
 rules = {}
@@ -24,5 +25,6 @@ key=0
 for line in rules_ls:
     print(line)
     input1, operation, input2, _, output = line.split(' ')
-    rules[key] = ('input1': input1, 'operation': operation, 'input2': input2, 'output': output)
+    rules[key] = {'input1': input1, 'operation': operation, 'input2': input2, 'output': output}
     key+=1
+rules_df = pd.DataFrame(rules)
