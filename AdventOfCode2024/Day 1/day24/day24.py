@@ -27,4 +27,5 @@ for line in rules_ls:
     input1, operation, input2, _, output = line.split(' ')
     rules[key] = {'input1': input1, 'operation': operation, 'input2': input2, 'output': output}
     key+=1
+    
 rules_df = pd.DataFrame(rules)
